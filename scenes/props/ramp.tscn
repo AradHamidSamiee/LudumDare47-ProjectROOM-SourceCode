@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/props/ramp.tres" type="Material" id=1]
+
+[sub_resource type="ConcavePolygonShape" id=1]
+data = PoolVector3Array( 0, 1, 1, 2, -1, 1, -2, -1, 1, 0, 1, -1, -2, -1, -1, 2, -1, -1, 0, 1, 1, 0, 1, -1, 2, -1, 1, 0, 1, -1, 2, -1, -1, 2, -1, 1, 0, 1, -1, 0, 1, 1, -2, -1, -1, 0, 1, 1, -2, -1, 1, -2, -1, -1, -2, -1, 1, 2, -1, 1, -2, -1, -1, 2, -1, 1, 2, -1, -1, -2, -1, -1 )
+
+[sub_resource type="PrismMesh" id=2]
+size = Vector3( 4, 2, 2 )
+
+[node name="ramp" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
+mesh = SubResource( 2 )
+material/0 = ExtResource( 1 )

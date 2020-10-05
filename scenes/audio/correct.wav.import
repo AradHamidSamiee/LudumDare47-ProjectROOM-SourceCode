@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/correct.wav-be5c10d7e24a6963059b1e5c42c077d1.sample"
+
+[deps]
+
+source_file="res://scenes/audio/correct.wav"
+dest_files=[ "res://.import/correct.wav-be5c10d7e24a6963059b1e5c42c077d1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

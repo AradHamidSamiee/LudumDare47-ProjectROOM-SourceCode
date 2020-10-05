@@ -1,0 +1,321 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://scenes/textures/lab_tile_bright.png" type="Texture" id=1]
+[ext_resource path="res://scenes/levels/menu.gd" type="Script" id=2]
+[ext_resource path="res://scenes/textures/PngItem_1584538.png" type="Texture" id=3]
+[ext_resource path="res://scenes/audio/environment_noise.wav" type="AudioStream" id=4]
+[ext_resource path="res://font/SF TransRobotics.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://scenes/levels/menu_buttons_font_style.tres" type="DynamicFont" id=6]
+[ext_resource path="res://scenes/textures/checked.png" type="Texture" id=7]
+[ext_resource path="res://scenes/textures/check.png" type="Texture" id=8]
+[ext_resource path="res://scenes/textures/git.png" type="Texture" id=9]
+[ext_resource path="res://scenes/textures/gitd.png" type="Texture" id=10]
+[ext_resource path="res://scenes/textures/insta.png" type="Texture" id=11]
+[ext_resource path="res://scenes/textures/instad.png" type="Texture" id=12]
+[ext_resource path="res://scenes/textures/twit.png" type="Texture" id=13]
+[ext_resource path="res://scenes/textures/twitd.png" type="Texture" id=14]
+[ext_resource path="res://scenes/textures/linkedin.png" type="Texture" id=15]
+[ext_resource path="res://scenes/textures/linkedind.png" type="Texture" id=16]
+[ext_resource path="res://scenes/chars/player_labels.tres" type="DynamicFont" id=17]
+
+[sub_resource type="QuadMesh" id=1]
+size = Vector2( 20, 20 )
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_unshaded = true
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 2, 2, 1 )
+uv1_offset = Vector3( -0.48504, 0, 0 )
+uv1_triplanar = true
+
+[sub_resource type="Animation" id=3]
+resource_name = "strafe_right"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:material/0:uv1_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -1, 0, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 120
+extra_spacing_char = 5
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 64
+extra_spacing_char = 5
+font_data = ExtResource( 5 )
+
+[node name="menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="background" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="background"]
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="Camera" type="Camera" parent="background"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
+keep_aspect = 0
+fov = 84.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="background"]
+autoplay = "strafe_right"
+anims/strafe_right = SubResource( 3 )
+
+[node name="foreground" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -965.0
+margin_top = -545.0
+margin_right = 965.0
+margin_bottom = 545.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+
+[node name="tune" type="AudioStreamPlayer" parent="."]
+bus = "song"
+
+[node name="ui" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_right = 5.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="ui"]
+anchor_left = 0.4
+anchor_right = 1.0
+anchor_bottom = 1.1
+margin_left = 0.349976
+margin_bottom = 0.179993
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.631373, 0.631373, 0.631373, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+text = "Project R.O.O.M"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="version" type="Label" parent="ui"]
+anchor_left = 0.849
+anchor_top = 0.652
+anchor_right = 0.926
+anchor_bottom = 0.775
+margin_left = -0.325073
+margin_top = -0.0800171
+margin_right = -11.5502
+margin_bottom = -0.500031
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+custom_colors/font_color_shadow = Color( 0.631373, 0.631373, 0.631373, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+text = "v0.3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="buttons" type="Control" parent="."]
+anchor_top = 0.5
+anchor_right = 0.277
+anchor_bottom = 1.0
+margin_right = -0.840027
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="begin" type="Button" parent="buttons"]
+anchor_left = 0.1
+anchor_right = 0.3
+anchor_bottom = 0.2
+margin_left = -0.562111
+margin_right = -0.458191
+margin_bottom = -0.218414
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_disabled = Color( 0.352941, 0, 0, 1 )
+custom_colors/font_color = Color( 0.631373, 0.631373, 0.631373, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.627451, 0, 1 )
+text = "Begin"
+flat = true
+align = 0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="exit" type="Button" parent="buttons"]
+anchor_left = 0.1
+anchor_top = 0.2
+anchor_right = 0.3
+anchor_bottom = 0.4
+margin_left = -0.562103
+margin_top = -0.218384
+margin_right = -0.458191
+margin_bottom = 0.103195
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_disabled = Color( 0.352941, 0, 0, 1 )
+custom_colors/font_color = Color( 0.631373, 0.631373, 0.631373, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.627451, 0, 1 )
+text = "Exit"
+flat = true
+align = 0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="crt" type="CheckBox" parent="buttons"]
+anchor_left = 0.1
+anchor_top = 0.4
+anchor_right = 0.512
+anchor_bottom = 0.524
+margin_left = -0.562103
+margin_top = 0.10321
+margin_right = -357.602
+margin_bottom = 0.143188
+custom_icons/checked = ExtResource( 7 )
+custom_icons/unchecked = ExtResource( 8 )
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.631373, 0.631373, 0.631373, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.631373, 0.631373, 0.631373, 1 )
+pressed = true
+text = " CRTshader"
+flat = true
+expand_icon = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="github" type="TextureButton" parent="buttons"]
+anchor_left = 0.1
+anchor_top = 0.593
+anchor_right = 0.215
+anchor_bottom = 0.711
+margin_left = -3.1
+margin_top = -0.220032
+margin_right = -0.165001
+margin_bottom = 0.0599976
+texture_normal = ExtResource( 10 )
+texture_hover = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="instagram" type="TextureButton" parent="buttons"]
+anchor_left = 0.282
+anchor_top = 0.593
+anchor_right = 0.403
+anchor_bottom = 0.711
+margin_left = 0.257996
+margin_top = -0.220032
+margin_right = 0.00698853
+margin_bottom = 0.0599976
+texture_normal = ExtResource( 11 )
+texture_hover = ExtResource( 12 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="twitter" type="TextureButton" parent="buttons"]
+anchor_left = 0.471
+anchor_top = 0.593
+anchor_right = 0.591
+anchor_bottom = 0.711
+margin_left = -0.100998
+margin_top = -0.220032
+margin_right = 0.178986
+margin_bottom = 0.0599976
+texture_normal = ExtResource( 13 )
+texture_hover = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="linkedin" type="TextureButton" parent="buttons"]
+anchor_left = 0.659
+anchor_top = 0.593
+anchor_right = 0.78
+anchor_bottom = 0.711
+margin_left = 0.0710144
+margin_top = -0.220032
+margin_right = -0.179993
+margin_bottom = 0.0599976
+texture_normal = ExtResource( 15 )
+texture_hover = ExtResource( 16 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="mouse_click" type="AudioStreamPlayer" parent="."]
+
+[node name="credits" type="Label" parent="."]
+anchor_left = 0.7
+anchor_top = 0.85
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -35.0
+custom_fonts/font = ExtResource( 17 )
+custom_colors/font_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+custom_colors/font_color_shadow = Color( 0.631373, 0.631373, 0.631373, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+text = "Made For Ludum Dare 47
+By Arad HamidSamiee
+October 2020"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="buttons/begin" to="." method="_on_begin_pressed"]
+[connection signal="pressed" from="buttons/exit" to="." method="_on_exit_pressed"]
+[connection signal="toggled" from="buttons/crt" to="." method="_on_CheckBox_toggled"]
+[connection signal="pressed" from="buttons/github" to="." method="_on_github_pressed"]
+[connection signal="pressed" from="buttons/instagram" to="." method="_on_instagram_pressed"]
+[connection signal="pressed" from="buttons/twitter" to="." method="_on_twitter_pressed"]
+[connection signal="pressed" from="buttons/linkedin" to="." method="_on_linkedin_pressed"]

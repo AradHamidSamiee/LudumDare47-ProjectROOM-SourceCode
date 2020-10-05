@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/environment_noise.wav-b89e12194f6ffc95bc5c4415650c8878.sample"
+
+[deps]
+
+source_file="res://scenes/audio/environment_noise.wav"
+dest_files=[ "res://.import/environment_noise.wav-b89e12194f6ffc95bc5c4415650c8878.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
