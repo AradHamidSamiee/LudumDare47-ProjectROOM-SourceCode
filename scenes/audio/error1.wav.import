@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/error1.wav-f82c8e49647154259d69f44bff051469.sample"
+
+[deps]
+
+source_file="res://scenes/audio/error1.wav"
+dest_files=[ "res://.import/error1.wav-f82c8e49647154259d69f44bff051469.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

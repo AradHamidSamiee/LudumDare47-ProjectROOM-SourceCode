@@ -1,0 +1,18 @@
+[gd_resource type="Environment" load_steps=2 format=2]
+
+[sub_resource type="ProceduralSky" id=1]
+sky_top_color = Color( 0.372549, 0.384314, 0.423529, 1 )
+sky_horizon_color = Color( 0.372549, 0.384314, 0.423529, 1 )
+ground_horizon_color = Color( 0.372549, 0.384314, 0.423529, 1 )
+
+[resource]
+background_mode = 2
+background_sky = SubResource( 1 )
+auto_exposure_enabled = true
+auto_exposure_max_luma = 1.0
+auto_exposure_speed = 4.0
+glow_enabled = true
+adjustment_enabled = true
+adjustment_brightness = 1.1
+adjustment_contrast = 1.5
+adjustment_saturation = 0.5

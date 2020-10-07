@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/chars/room.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/props/monitor.tscn" type="PackedScene" id=4]
+
+[node name="game" type="Spatial"]
+
+[node name="room" parent="." instance=ExtResource( 2 )]
+
+[node name="monitor" parent="." instance=ExtResource( 4 )]
